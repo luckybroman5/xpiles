@@ -1,0 +1,38 @@
+{
+  "name": "xpiles",
+  "version": "0.0.1",
+  "description": "A cross-compiler for nodejs when disk space is at a premium",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "node",
+    "cross-compile",
+    "cross",
+    "compile",
+    "transpile",
+    "IoT",
+    "onionomega",
+    "omega",
+    "onionomega2",
+    "omega2",
+    "onion",
+    "transpile",
+    "trans-compile",
+    "transcompile",
+    "tool",
+    "internet-of-things",
+    "internet",
+    "of",
+    "things",
+    "iot",
+    "IOT",
+    "raspberrypi",
+    "rapberry-pi",
+    "banapi",
+    "banampim.2"
+  ],
+  "author": "Kade S. Green",
+  "license": "ISC"
+}
