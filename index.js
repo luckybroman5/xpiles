@@ -17,10 +17,11 @@ async function build() {
   // console.log(bundle.modules); // an array of module objects
 
   // generate code and a sourcemap
-  const { code, map } = await bundle.generate(outputOptions);
+  // console.log(outputOptions);
+  // const { code, map } = await bundle.generate(outputOptions);
 
   // or write the bundle to disk
-  // await bundle.write(outputOptions);
+  await bundle.write(outputOptions);
 }
 
 build();

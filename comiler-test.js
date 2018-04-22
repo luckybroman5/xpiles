@@ -1,8 +1,5 @@
 'use strict';
 
-new Promise();
-
-
 // COMMENT
 import kade from './compiler-test2';
 
