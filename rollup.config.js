@@ -5,6 +5,7 @@ const closure = require('rollup-plugin-closure-compiler-js');
 const uglify = require('rollup-plugin-uglify');
 const filesize = require('rollup-plugin-filesize');
 
+// @TODO Can i use import here?
 // import commonjs from 'rollup-plugin-commonjs';
 // import resolve from 'rollup-plugin-node-resolve';
 // import babel from 'rollup-plugin-babel';
@@ -12,9 +13,9 @@ const filesize = require('rollup-plugin-filesize');
 // import uglify from 'rollup-plugin-uglify';
 // import filesize from 'rollup-plugin-filesize';
 
-const useBabel = false;
-const useGoogleClosure = true;
-const useUglify = false;
+const useBabel = true;
+const useGoogleClosure = false;
+const useUglify = true;
 
 
 const RollupConf = {
@@ -23,7 +24,7 @@ const RollupConf = {
     plugins: [],
   },
   output: {
-    file: 'bundle.js',
+    file: 'dist/bundle.js',
     format: 'cjs'
   },
 };
@@ -44,7 +45,10 @@ if (useBabel) {
 }
 
 if (useGoogleClosure) {
-  RollupConf.input.plugins.push(closure());
+  RollupConf.input.plugins.push(closure({
+    env: 'CUSTOM',
+    compilationLevel: 'ADVANCED',
+  }));
 }
 
 if (useUglify) {

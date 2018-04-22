@@ -1,27 +1,38 @@
-'use strict';
+const commandLineArgs = require('command-line-args')
 
-const rollup = require('rollup');
+/* first - parse the main command */
+const mainDefinitions = [
+  { name: 'command', defaultOption: true }
+]
+const mainOptions = commandLineArgs(mainDefinitions, { stopAtFirstUnknown: true })
+const argv = mainOptions._unknown || []
 
-const config = require('./rollup.config.js');
+// console.log('mainOptions\n===========')
+// console.log(mainOptions)
 
-// see below for details on the options
-const inputOptions = config.input;
-const outputOptions = config.output;
+/* second - parse the merge command options */
+// if (mainOptions.command === 'merge') {
+//   const mergeDefinitions = [
+//     { name: 'squash', type: Boolean },
+//     { name: 'message', alias: 'm' }
+//   ]
+//   const mergeOptions = commandLineArgs(mergeDefinitions, { argv })
 
-async function build() {
-  // create a bundle
-  const bundle = await rollup.rollup(inputOptions);
+  // console.log('\nmergeOptions\n============')
+  // console.log(mergeOptions)
+// }
 
-  // console.log(bundle.imports); // an array of external dependencies
-  // console.log(bundle.exports); // an array of names exported by the entry point
-  // console.log(bundle.modules); // an array of module objects
+// console.log(mainOptions);
 
-  // generate code and a sourcemap
-  // console.log(outputOptions);
-  // const { code, map } = await bundle.generate(outputOptions);
+if (mainOptions.command === 'compile') {
+  const compileDefinitions = [
+    { name: 'src'},
+    { name: 'dest'}
+  ];
 
-  // or write the bundle to disk
-  await bundle.write(outputOptions);
+  const compileOptions = commandLineArgs(compileDefinitions, { argv });
+  
+
+  // console.log(compileOptons);
+  require('./compile')(compileOptions.src, compileOptions.dest);
 }
-
-build();
