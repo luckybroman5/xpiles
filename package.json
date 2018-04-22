@@ -1,6 +1,6 @@
 {
   "name": "xpiles",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A cross-compiler for nodejs when disk space is at a premium",
   "main": "index.js",
   "scripts": {
@@ -37,9 +37,7 @@
   "license": "ISC",
   "devDependencies": {
     "i": "^0.3.6",
-    "npm": "^5.8.0",
-    "rollup": "^0.58.1",
-    "rollup-plugin-uglify": "^3.0.0"
+    "npm": "^5.8.0"
   },
   "dependencies": {
     "babel-core": "^6.26.0",
@@ -47,11 +45,13 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-es2015-rollup": "^3.0.0",
     "google-closure-compiler": "^20180402.0.0",
+    "rollup": "^0.58.1",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-closure-compiler-js": "^1.0.6",
     "rollup-plugin-commonjs": "^9.1.0",
     "rollup-plugin-filesize": "^1.5.0",
     "rollup-plugin-generate-package-json": "^2.0.1",
-    "rollup-plugin-node-resolve": "^3.3.0"
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-uglify": "^3.0.0"
   }
 }
