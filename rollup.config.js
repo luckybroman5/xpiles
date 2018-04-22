@@ -19,7 +19,7 @@ const useUglify = false;
 
 const RollupConf = {
   input: {
-    input: 'comiler-test.js',
+    input: 'index.js',
     plugins: [],
   },
   output: {
