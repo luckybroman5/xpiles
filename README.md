@@ -37,13 +37,13 @@ Using `xpiles` you can get around this problem by eliminating the need for `npm`
 ```
 npm install -g xpiles
 
-xpiles compile --inputFile=index.js outputFile=dist/bundle.js
+xpiles compile --src=index.js --dest=build/bundle.js
 ```
 
 From here you have a `bundle.js` file that can be executed. Now something to the effect of:
 
 ```
-scp dist/bundle.js root@192.168.3.1:~/bundle.js
+scp build/bundle.js root@192.168.3.1:~/bundle.js
 ```
 to upload the tiny build file, turning multiple megabytes into kilobytes!
 
