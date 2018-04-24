@@ -1,4 +1,6 @@
 const commandLineArgs = require('command-line-args')
+const compile = require('./compile')
+const watch = require('./watch')
 
 /* first - parse the main command */
 const mainDefinitions = [
@@ -6,23 +8,6 @@ const mainDefinitions = [
 ]
 const mainOptions = commandLineArgs(mainDefinitions, { stopAtFirstUnknown: true })
 const argv = mainOptions._unknown || []
-
-// console.log('mainOptions\n===========')
-// console.log(mainOptions)
-
-/* second - parse the merge command options */
-// if (mainOptions.command === 'merge') {
-//   const mergeDefinitions = [
-//     { name: 'squash', type: Boolean },
-//     { name: 'message', alias: 'm' }
-//   ]
-//   const mergeOptions = commandLineArgs(mergeDefinitions, { argv })
-
-  // console.log('\nmergeOptions\n============')
-  // console.log(mergeOptions)
-// }
-
-// console.log(mainOptions);
 
 if (mainOptions.command === 'compile') {
   const compileDefinitions = [
@@ -34,5 +19,31 @@ if (mainOptions.command === 'compile') {
   
 
   // console.log(compileOptons);
-  require('./compile')(compileOptions.src, compileOptions.dest);
+  compile(compileOptions.src, compileOptions.dest).catch(console.log);
+}
+
+if (mainOptions.command === 'watch') {
+  const watchDefinitions = [
+    { name: 'src'},
+    { name: 'dest'},
+    { name: 'host' },
+    { name: 'user' },
+  ];
+
+  const watchOptions = commandLineArgs(watchDefinitions, { argv });
+  
+  watch(watchOptions.src, watchOptions.dest, watchOptions.host, watchOptions.user);
+}
+
+if (mainOptions.command === 'run') {
+  const waitDefinitions = [
+    { name: 'host' },
+    { name: 'user' },
+    { name: 'passwordFile' },
+    { name: 'bundle' },
+  ];
+
+  const waitOptions = commandLineArgs(waitDefinitions, { argv });
+
+  require('./uploadAndRun')(waitOptions.host, waitOptions.user, waitOptions.passwordFile, waitOptions.bundle);
 }

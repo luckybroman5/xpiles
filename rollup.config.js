@@ -4,6 +4,7 @@ const babel = require('rollup-plugin-babel');
 const closure = require('rollup-plugin-closure-compiler-js');
 const uglify = require('rollup-plugin-uglify');
 const filesize = require('rollup-plugin-filesize');
+const json = require('rollup-plugin-json');
 
 // @TODO Can i use import here?
 // import commonjs from 'rollup-plugin-commonjs';
@@ -31,16 +32,22 @@ const RollupConf = {
 
 RollupConf.input.plugins.push(commonjs());
 
+RollupConf.input.plugins.push(json());
+
 RollupConf.input.plugins.push(resolve({
   // pass custom options to the resolve plugin
   customResolveOptions: {
     moduleDirectory: 'node_modules'
-  }
+  },
+  extensions: [ '.js', '.json' ],
 }));
 
 if (useBabel) {
   RollupConf.input.plugins.push(babel({
-    exclude: 'node_modules/**' // only transpile our source code
+   exclude: [
+     'node_modules/**', // only transpile our source code
+     '*.json'
+   ]
   }));
 }
 
@@ -50,6 +57,7 @@ if (useGoogleClosure) {
     compilationLevel: 'ADVANCED',
   }));
 }
+
 
 if (useUglify) {
   RollupConf.input.plugins.push(uglify());
