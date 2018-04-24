@@ -1,8 +1,11 @@
 {
   "name": "xpiles",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A cross-compiler for nodejs when disk space is at a premium",
   "main": "index.js",
+  "bin": {
+    "xpiles": "./index.js"
+  },
   "scripts": {
     "test": "test"
   },
@@ -31,7 +34,12 @@
     "raspberrypi",
     "rapberry-pi",
     "banapi",
-    "banampim.2"
+    "banampim.2",
+    "hot",
+    "hotreloading",
+    "hot-reloading",
+    "reloading",
+    "dev-server"
   ],
   "author": "Kade S. Green",
   "license": "ISC",
