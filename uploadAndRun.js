@@ -18,7 +18,15 @@ module.exports = function devServer(host, user, passwordFile, bundle) {
   const scpDevServerFile = () => {
     console.log('Sending dev server file to host...');
     const prefix = `${userAndHostPrefix} scp`;
-    const scp = spawn('scp', [bundle, `${user}@${host}:~/${uploadedFileName}`])
+    //const scp = spawn('ls')
+    const args = [];
+    if (passwordFile) {
+      args.push('-i')
+      args.push(passwordFile)
+    }
+    args.push(`${user}@${host}:~/${uploadedFileName}`)
+    args.push(bundle);
+    const scp = spawn('scp', args)
 
     scp.stdout.on('data', (data) => handleData(data, prefix));
     
@@ -36,7 +44,14 @@ module.exports = function devServer(host, user, passwordFile, bundle) {
   const startServer = () => {
     console.log('Executing Dev Server file on Host..');
     const prefix = `${userAndHostPrefix} ssh`;
-    ssh = spawn('ssh', ['-tt', `${user}@${host}`, `node --debug ${uploadedFileName}`]);
+    const args = ['-tt'];
+    if (passwordFile) {
+      args.push('-i');
+      args.push(passwordFile);
+    }
+    args.push(`${user}@${host}`);
+    args.push(`node --debug ${uploadedFileName}`)
+    ssh = spawn('ssh', args);
   
     ssh.stdout.on('data', (data) => handleData(data, prefix));
     
@@ -52,7 +67,7 @@ module.exports = function devServer(host, user, passwordFile, bundle) {
     if (!ssh) {
       startServer();
       return;
-    }
+    }s
     ssh.on('close', () => {
       startServer();
     })

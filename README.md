@@ -53,7 +53,10 @@ xpiles run --host=192.168.3.1 --user=root --bundle=build/bundle.js
 
 ```
 xpiles watch --src=index.js --dest=build/bundle.js --host=192.168.3.1 --user=root
-# It will ask for ssh password twice!
+```
+Above will prompt you for a password, to use an Identity file:
+```
+xpiles watch --src=index.js --dest=build/bundle.js --host=192.168.3.1 --user=root -i ~/.ssh/id_rsa
 ```
 
 
@@ -63,4 +66,7 @@ xpiles watch --src=index.js --dest=build/bundle.js --host=192.168.3.1 --user=roo
 - Run tests on build and upload
 - man pages
 - Improved documentation
-- Allow an Identify file for ssh, so you don't need to enter a password
+- Docker exec support (rather than just ssh and scp)
+
+### We want to hear from you!!
+##### Please, open an issue on GitHub for any thoughts, complaints or cudos!!

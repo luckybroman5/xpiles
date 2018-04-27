@@ -30,18 +30,19 @@ if (mainOptions.command === 'watch') {
     { name: 'dest'},
     { name: 'host' },
     { name: 'user' },
+    { name: 'passwordFile', alias: 'i' },
   ];
 
   const watchOptions = commandLineArgs(watchDefinitions, { argv });
   
-  watch(watchOptions.src, watchOptions.dest, watchOptions.host, watchOptions.user);
+  watch(watchOptions.src, watchOptions.dest, watchOptions.host, watchOptions.user, watchOptions.passwordFile);
 }
 
 if (mainOptions.command === 'run') {
   const waitDefinitions = [
     { name: 'host' },
     { name: 'user' },
-    { name: 'passwordFile' },
+    { name: 'passwordFile', alias: 'i' },
     { name: 'bundle' },
   ];
 

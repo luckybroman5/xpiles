@@ -1,6 +1,6 @@
 {
   "name": "xpiles",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "A cross-compiler for nodejs when disk space is at a premium",
   "main": "index.js",
   "bin": {
@@ -9,9 +9,9 @@
   "scripts": {
     "test": "test"
   },
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/luckybroman5/xpiles.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luckybroman5/xpiles.git"
   },
   "keywords": [
     "node",

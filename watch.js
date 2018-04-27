@@ -8,7 +8,7 @@ const config = require('./rollup.config.js');
 const inputOptions = config.input;
 const outputOptions = config.output;
 
-module.exports = function (inputFile, outputFile, host, user) {
+module.exports = function (inputFile, outputFile, host, user, identityFile) {
   // create a bundle
 
   if (inputFile) inputOptions.input = inputFile;
@@ -45,7 +45,7 @@ module.exports = function (inputFile, outputFile, host, user) {
       if (session) {
         session.reUploadAndRun()
       } else {
-        session = uploadAndRun(host, user, null, outputOptions.file);
+        session = uploadAndRun(host, user, identityFile, outputOptions.file);
       }
     }
   });
