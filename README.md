@@ -67,6 +67,7 @@ xpiles watch --src=index.js --dest=build/bundle.js --host=192.168.3.1 --user=roo
 - man pages
 - Improved documentation
 - Docker exec support (rather than just ssh and scp)
+- More configurability with node versions, etc
 
 ### We want to hear from you!!
 ##### Please, open an issue on GitHub for any thoughts, complaints or cudos!!
