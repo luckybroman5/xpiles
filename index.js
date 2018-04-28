@@ -21,7 +21,7 @@ if (mainOptions.command === 'compile') {
   
 
   // console.log(compileOptons);
-  compile(compileOptions.src, compileOptions.dest).catch(console.log);
+  compile(compileOptions.src, compileOptions.dest);
 }
 
 if (mainOptions.command === 'watch') {

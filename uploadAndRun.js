@@ -24,8 +24,8 @@ module.exports = function devServer(host, user, passwordFile, bundle) {
       args.push('-i')
       args.push(passwordFile)
     }
-    args.push(`${user}@${host}:~/${uploadedFileName}`)
     args.push(bundle);
+    args.push(`${user}@${host}:~/${uploadedFileName}`)
     const scp = spawn('scp', args)
 
     scp.stdout.on('data', (data) => handleData(data, prefix));
@@ -67,7 +67,7 @@ module.exports = function devServer(host, user, passwordFile, bundle) {
     if (!ssh) {
       startServer();
       return;
-    }s
+    }
     ssh.on('close', () => {
       startServer();
     })

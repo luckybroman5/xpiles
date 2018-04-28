@@ -1,6 +1,6 @@
 {
   "name": "xpiles",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "A cross-compiler for nodejs when disk space is at a premium",
   "main": "index.js",
   "bin": {
